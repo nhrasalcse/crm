@@ -6,21 +6,24 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Customer;
 use Illuminate\Support\Facades\Auth;
+
+use App\User;
 use Brian2694\Toastr\Facades\Toastr;
 
 class CustomerController extends Controller
 {
     public function PenddingCustomers(){
       if(Auth::user()->role_id==1){
+        $agents=User::with('role')->where('delete_status',1)->where('role_id','!=', '1')->where('id','!=', Auth::user()->id)->get();
         $customers=Customer::where('delete_status',1)->where('pendding_status',0)->get();
-        return view('dashboard.pages.pendding-customers',compact('customers'));
+        return view('dashboard.pages.pendding-customers',compact('customers','agents'));
       }else{
         return back();
       }
       }
     public function index(){
       if(Auth::user()->role_id==1){
-        $customers=Customer::where('delete_status',1)->where('pendding_status',1)->get();
+        $customers=Customer::with('agent')->where('delete_status',1)->where('pendding_status',1)->get();
       }else{
         $customers=Customer::where('delete_status',1)->where('pendding_status',1)->where('agent_id',Auth::user()->id)->get();
       }
@@ -94,7 +97,17 @@ class CustomerController extends Controller
       return back();
       }
 
-      public function AcceptCustomers($id){
-        return $id;
+      public function AcceptCustomers(Request $request){
+          $customer=Customer::findOrFail($request->id);
+         if($customer && !empty($request->agent_id)){
+           $customer->pendding_status=1;
+           $customer->agent_id=$request->agent_id;
+           $customer->save();
+           Toastr::success('Accept Customer successful','Success');
+            return back();
+         }else{
+          Toastr::error('You have something wrong','Error');
+          return back();
+         }
       }
 }

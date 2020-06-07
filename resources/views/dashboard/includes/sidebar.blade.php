@@ -18,9 +18,9 @@
             <li><a href="{{route('home')}}"> <i class="icon-home"></i>Home</a></li>
             @if(Auth::user()->role_id==1)
             <li><a href="{{route('admin.index')}}"> <i class="icon-user"></i>Admins</a></li>
+           <li><a href="{{route('customer.pendding')}}"> <i class="icon-user"></i>Pendding Customers</a></li>
            @endif
             <li><a href="{{route('customer.index')}}"> <i class="icon-user"></i>Customer</a></li>
-            <li><a href="{{route('customer.pendding')}}"> <i class="icon-user"></i>Pendding Customers</a></li>
             <!-- <li><a href="{{route('invoice.create')}}"> <i class="icon-grid"></i>Invoice</a></li> -->
             <!-- <li><a href="#"> <i class="icon-form"></i>Forms</a></li>
             <li><a href="#"> <i class="fa fa-bar-chart"></i>Charts</a></li>
@@ -29,9 +29,9 @@
               <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                 <li><a href="{{route('invoice.create')}}">Invoice Create</a></li>
                 <li><a href="{{route('invoice.index')}}">Invoice</a></li>
+                <!-- <li><a href="##">Page</a></li>
                 <li><a href="##">Page</a></li>
-                <li><a href="##">Page</a></li>
-                <li><a href="##">Page</a></li>
+                <li><a href="##">Page</a></li> -->
               </ul>
             </li>
             <!-- <li><a href="#"> <i class="icon-interface-windows"></i>Login page</a></li>

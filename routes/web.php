@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+*/ 
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -46,7 +46,7 @@ Route::group(['middleware' => ['auth']], function() {
 
 
     Route::get('/pendding-customers', 'CustomerController@PenddingCustomers')->name('customer.pendding');
-    Route::get('/pendding-customers-accept-{id}', 'CustomerController@AcceptCustomers')->name('customer.accept');
+    Route::post('/pendding-customers-accept', 'CustomerController@AcceptCustomers')->name('customer.accept');
     Route::get('/customers', 'CustomerController@index')->name('customer.index');
     Route::post('customer-store', 'CustomerController@store')->name('customer.store');
     Route::get('customer-edit/{id}', 'CustomerController@edit');

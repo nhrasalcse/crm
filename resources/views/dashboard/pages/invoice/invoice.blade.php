@@ -31,12 +31,15 @@
                                     <table class="table table-striped myTable data-table">
                                         <thead>
                                             <tr>
-                                            <th>SL</th>
+                                            <th>Order Date</th>
+                                            <th>Order ID</th>
                                             <th>Name</th>
                                             <th>Phone</th>
+                                            <th>City</th>
                                             <th>Total</th>
-                                            <th>Paid</th>
-                                            <th>Due</th>
+                                            @if(Auth::user()->role_id==1)
+                                            <th>Agent</th>
+                                            @endif
                                             <th>Action</th>
                                             </tr>
                                         </thead>
@@ -44,12 +47,15 @@
                                             @if(count( $invoices)>0)
                                                 @foreach($invoices as $key=>$invoice)
                                                 <tr>
-                                                    <th>{{$key+1}}</th>
+                                                    <td>{{ date("d-M-Y", strtotime($invoice->date)) ?? ''}}</td>
+                                                    <td>{{$invoice->id ?? ''}}</td>
                                                     <td>{{$invoice->customers->name ?? ''}}</td>
                                                     <td>{{$invoice->customers->phone ?? ''}}</td>
+                                                    <td>{{$invoice->customers->city ?? ''}}</td>
                                                     <td>{{$invoice->total ?? ''}}</td>
-                                                    <td>{{$invoice->paid ?? ''}}</td>
-                                                    <td>{{$invoice->due ?? ''}}</td>
+                                                    @if(Auth::user()->role_id==1)
+                                                    <td>{{$invoice->user->name ?? ''}}</td>
+                                                    @endif
                                                     <td>
                                                         <table>
                                                             <tr> 
@@ -67,13 +73,16 @@
                                             @endif
                                         </tbody>
                                         <tfoot>
-                                        <tr>
-                                            <th>SL</th>
+                                            <tr>
+                                            <th>Order Date</th>
+                                            <th>Order ID</th>
                                             <th>Name</th>
                                             <th>Phone</th>
+                                            <th>City</th>
                                             <th>Total</th>
-                                            <th>Paid</th>
-                                            <th>Due</th>
+                                            @if(Auth::user()->role_id==1)
+                                            <th>Agent</th>
+                                            @endif
                                             <th>Action</th>
                                             </tr>
                                         </tfoot>

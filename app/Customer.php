@@ -20,4 +20,7 @@ class Customer extends Model
     'pendding_status',
     'agent_id',
   ];
+  public function agent(){
+      return $this->belongsTo(User::class ,'agent_id');
+     }
 }

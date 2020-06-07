@@ -58,7 +58,7 @@
                                                         <table>
                                                             <tr> 
                                                                 <td><a href="#" class="btn btn-success edit-customer" data-id="{{$customer->id}}" data-toggle="modal" data-target=".bd-example-modal-lg" ><i class="fa fa-edit"></i></a></td>
-                                                                <td><a href="{{route('customer.delete',$customer->id)}}" class="btn btn-info" data-id="{{$customer->id}}">Accept</a></td>
+                                                                <td><a href="#"  data-toggle="modal" data-target="#exampleModal"  data-id="{{$customer->id}}"  class="btn btn-info accept" >Accept</a></td>
                                                                 <!-- <td><a href="#" class="btn btn-outline-danger" data-id="{{$customer->id}}">Reject</a></td> -->
                                                             @if(Auth::user()->role_id==1)
                                                                 <td><a href="{{route('customer.delete',$customer->id)}}" class="btn btn-danger" onclick="return confirm('Are You Sure')"><i class="fa fa-trash"></i></a></td>
@@ -218,7 +218,46 @@
              <hr>
          </div>
      </section>
-
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Select Agent</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="modal-body">
+        <form class="form-horizontal row content-justify-center" action="{{route('customer.accept')}}" method="post" enctype="multipart/form-data">
+        @csrf
+        <input type="hidden" name="id" id="customer-id-agent" value="">
+                        
+            <div class="col-md-12">
+            <div class="form-group row">
+                <label class="col-sm-2">Agent</label>
+                <div class="col-sm-6">
+                <select name="agent_id"  class="form-control">
+                <option value="">Select</option>
+                @foreach($agents as $agent)
+                <option value="{{$agent->id ?? ''}}">{{$agent->name ?? ''}}</option>
+                @endforeach
+                </select>
+                </div>
+            </div>
+            <div class="form-group row">       
+                <div class="col-sm-10 offset-sm-2">
+                <input type="submit" value="Accept" class="btn btn-primary">
+                </div>
+            </div>
+        </form>
+      </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
     <!-- Create Modal -->
         <div class="modal fade" id="createCustomerModal" tabindex="-1" role="dialog" aria-labelledby="createCustomerModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
@@ -374,6 +413,12 @@ $(document).ready(function(){
                     $("#update-courier_address").val(data.courier_address);
                 }
     })
+    })
+    $(document).on('click','.accept',function(e){
+        e.preventDefault()
+        var id=$(this).data('id');
+        $("#customer-id-agent").val(id);
+        console.log(id)
     })
 });
 </script>

@@ -39,6 +39,9 @@
                                             <th>Alternate No</th>
                                             <th>Address</th>
                                             <th>Pin Code</th>
+                                            @if(Auth::user()->role_id==1)
+                                            <th>Agent</th>
+                                            @endif
                                             <th>Action</th>
                                             </tr>
                                         </thead>
@@ -54,6 +57,9 @@
                                                     <td>{{$customer->alternate_no ?? ''}}</td>
                                                     <td>{{$customer->address ?? ''}}</td>
                                                     <td>{{$customer->pincode ?? ''}}</td>
+                                                    @if(Auth::user()->role_id==1)
+                                                    <td>{{$customer->agent->name ?? ''}}</td>
+                                                    @endif
                                                     <td>
                                                         <table>
                                                             <tr> 
@@ -79,6 +85,9 @@
                                             <th>Alternate No</th>
                                             <th>Address</th>
                                             <th>Pin Code</th>
+                                            @if(Auth::user()->role_id==1)
+                                            <th>Agent</th>
+                                            @endif
                                             <th>Action</th>
                                             </tr>
                                         </tfoot>

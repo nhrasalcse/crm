@@ -74,53 +74,12 @@
                             <div class="col-md-6">
                             <table class="table table-borderless">
                             <tr>
-                                <td>Sub Total</td>
+                                <td> Total</td>
                                 <td>
                                     <input type="text" name="subtotal" value="" class="form-control total"readonly></td>
                             </tr>
-                            <tr>
-                                <td>Discount</td>
-                                <td>
-                                <div class="input-group mb-2">
-                                    <input type="number" name="discount" value="" min="0" max="100" class="form-control discount" >
-                                    <div class="input-group-prepend">
-                                    <div class="input-group-text">%</div>
-                                    </div>
-                                </div>
-                                </td>
                             </tr>
-                            <tr>
-                                <td>Tax</td>
-                                <td>
-                                <div class="input-group mb-2">
-                                    <input type="number" name="tax" value="5" min="0" max="100" class="form-control tax" >
-                                    <div class="input-group-prepend">
-                                    <div class="input-group-text">%</div>
-                                    </div>
-                                </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Total</td>
-                                <td>
-                                
-                                <input type="text" name="full_total" value="" max="" class="form-control fulltotals" >
-                                </td>
-                            </tr>
-                            </tr>
-                            <tr>
-                                <td>Pay</td>
-                                <td>
-                                
-                                <input type="text" required name="pay" value="" max="" class="form-control pay" >
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Due</td>
-                                <td>
-                                <input type="text" name="due" value="" class="form-control due" readonly>
-                                </td>
-                            </tr>
+                            
                             </table>
                             </div>
                             </div>

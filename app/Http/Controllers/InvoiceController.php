@@ -12,13 +12,28 @@ use Brian2694\Toastr\Facades\Toastr;
 class InvoiceController extends Controller
 {
   public function index(){
-     $invoices=Invoice::with([
-                          'customers'=>function($query){ $query->select(['id','name','phone']);}
-                        ])->where('delete_status',1)->get();
-    return view('dashboard.pages.invoice.invoice',compact('invoices'));
+     
+        if(Auth::user()->role_id==1){
+          $invoices=Invoice::with([
+            'customers'=>function($query){ $query->select(['id','name','phone','city']);},
+            'user'=>function($query){ $query->select(['id','name']);}
+          ])->where('delete_status',1)->get();
+        }else{
+          $invoices=Invoice::with([
+            'customers'=>function($query){ $query->select(['id','name','phone','city']);},
+            'user'=>function($query){ $query->select(['id','name']);}
+          ])->where('user_id',Auth::user()->id)->where('delete_status',1)->get();
+        }
+
+        return view('dashboard.pages.invoice.invoice',compact('invoices')); 
   }
     public function create_invoice(){
-        $customers=Customer::where('delete_status',1)->get();
+        // $customers=Customer::where('delete_status',1)->get();
+        if(Auth::user()->role_id==1){
+          $customers=Customer::with('agent')->where('delete_status',1)->where('pendding_status',1)->get();
+        }else{
+          $customers=Customer::where('delete_status',1)->where('pendding_status',1)->where('agent_id',Auth::user()->id)->get();
+        }
         return view('dashboard.pages.invoice.create-invoice',compact('customers'));
       }
       public function store(Request $request){
@@ -29,12 +44,12 @@ class InvoiceController extends Controller
         $invoice=new Invoice();
         $invoice->customer_id=$request->customer_id;
         $invoice->sub_total=$request->subtotal;
-        $invoice->tax=$request->tax;
-        $invoice->discount=$request->discount;
-        $invoice->total=$request->full_total;
-        $invoice->paid=$request->pay;
-        $invoice->due=$request->due;
-        $invoice->date=$request->date;
+        // $invoice->tax=$request->tax;
+        // $invoice->discount=$request->discount;
+        $invoice->total=$request->subtotal;
+        // $invoice->paid=$request->pay;
+        // $invoice->due=$request->due;
+        // $invoice->date=$request->date;
         $invoice->user_id=Auth::user()->id;
         $invoice->date=date('Y-m-d');
         if($invoice->save()){

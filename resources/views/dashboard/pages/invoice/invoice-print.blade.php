@@ -95,7 +95,7 @@
             <th>SL</th>
             <th>Product</th>
             <th>Price</th>
-            <th>Qty/th>
+            <th>Qty</th>
             <th>Subtotal</th>
           </tr>
           </tr></tfoot>
@@ -126,22 +126,23 @@
 
         <div class="table-responsive">
           <table class="table">
-            <tr>
+            <!-- <tr>
               <th style="width:50%">Sub total:</th>
               <td>{{$invoice->sub_total ?? ''}}</td>
-            </tr>
-            <tr>
+            </tr> -->
+            <!-- <tr>
               <th>Discount ({{$invoice->discount ?? ''}}%) </th>
               <td>-{{($invoice->sub_total*$invoice->discount)/100 ?? ''}}</td>
             </tr>
             <tr>
               <th>Tax ({{$invoice->tax ?? ''}}%) </th>
               <td>{{ ($invoice->sub_total-($invoice->sub_total*$invoice->discount)/100)*$invoice->tax/100 ?? ''}}</td>
-            </tr>
-            <tr>
+            </tr>-->
+
+              <tr>
               <th>Total:</th>
               <td>{{$invoice->total ?? ''}}</td>
-            </tr>
+            </tr> 
           </table>
         </div>
       </div>

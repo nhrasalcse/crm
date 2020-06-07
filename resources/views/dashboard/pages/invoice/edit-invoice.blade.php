@@ -79,11 +79,11 @@
                             <div class="col-md-6">
                             <table class="table table-borderless">
                             <tr>
-                                <td>Sub Total</td>
+                                <td>Total</td>
                                 <td>
                                     <input type="text" name="subtotal" value="{{$invoice->sub_total ?? ''}}" class="form-control total"readonly></td>
                             </tr>
-                            <tr>
+                            <!-- <tr>
                                 <td>Discount</td>
                                 <td>
                                 <div class="input-group mb-2">
@@ -125,7 +125,7 @@
                                 <td>
                                 <input type="text" name="due" value="{{$invoice->due ?? ''}}" class="form-control due" readonly>
                                 </td>
-                            </tr>
+                            </tr> -->
                             </table>
                             </div>
                             </div>
