@@ -63,7 +63,7 @@
                                                           
                                                             @if(Auth::user()->role_id==1)
                                                                 <td><a href="{{route('invoice.delete',$invoice->id)}}" class="btn btn-danger" onclick="return confirm('Are You Sure')"><i class="fa fa-trash"></i></a></td>
-                                                                <td><a href="{{route('invoice.edit',$invoice->id)}}" class="btn btn-success" data-id="{{$invoice->id}}"><i class="fa fa-edit"></i></a></td>
+                                                                <!-- <td><a href="{{route('invoice.edit',$invoice->id)}}" class="btn btn-success" data-id="{{$invoice->id}}"><i class="fa fa-edit"></i></a></td> -->
                                                                 @endif
                                                             </tr>
                                                         </table>

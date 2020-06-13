@@ -65,6 +65,14 @@
       <!-- /.col -->
     </div>
     <!-- /.row -->
+    <div class="row justify-content-center m-3">
+    <div class="col-md-4">
+    <b>
+    TOTAL AMOUNT<br>Rs. {{$invoice->total ?? ''}}
+    </b>
+
+    </div>
+    </div>
 
     <!-- Table row -->
     <div class="row">
@@ -92,17 +100,16 @@
           </tbody>
           <tfoot>
           <tr>
-            <th>SL</th>
-            <th>Product</th>
-            <th>Price</th>
-            <th>Qty</th>
-            <th>Subtotal</th>
+            <th colspan="4" class="text-uppercase"> total (inclusive of all taxes and shipping charges)</th>
+            <th>Rs. {{$invoice->total ?? ''}}</th>
+            
           </tr>
           </tr></tfoot>
         </table>
       </div>
       <!-- /.col -->
     </div>
+    
     <!-- /.row -->
 
     <div class="row">
@@ -121,31 +128,7 @@
       </div> -->
       <!-- /.col -->
      
-      <div class="col-xs-6">
-        <p class="lead">Amount Due</p>
-
-        <div class="table-responsive">
-          <table class="table">
-            <!-- <tr>
-              <th style="width:50%">Sub total:</th>
-              <td>{{$invoice->sub_total ?? ''}}</td>
-            </tr> -->
-            <!-- <tr>
-              <th>Discount ({{$invoice->discount ?? ''}}%) </th>
-              <td>-{{($invoice->sub_total*$invoice->discount)/100 ?? ''}}</td>
-            </tr>
-            <tr>
-              <th>Tax ({{$invoice->tax ?? ''}}%) </th>
-              <td>{{ ($invoice->sub_total-($invoice->sub_total*$invoice->discount)/100)*$invoice->tax/100 ?? ''}}</td>
-            </tr>-->
-
-              <tr>
-              <th>Total:</th>
-              <td>{{$invoice->total ?? ''}}</td>
-            </tr> 
-          </table>
-        </div>
-      </div>
+     
       <!-- /.col -->
     </div>
     <!-- /.row -->
