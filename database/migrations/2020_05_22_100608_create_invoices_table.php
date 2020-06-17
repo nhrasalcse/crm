@@ -25,6 +25,7 @@ class CreateInvoicesTable extends Migration
             $table->string('date')->nullable();
             $table->string('payment_method')->nullable();
             $table->string('user_id')->nullable();
+            $table->string('order_status')->nullable();
             $table->string('delete_status')->default(1);
             $table->timestamps();
         });

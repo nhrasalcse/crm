@@ -47,6 +47,7 @@ class InvoiceController extends Controller
         // $invoice->tax=$request->tax;
         // $invoice->discount=$request->discount;
         $invoice->total=$request->subtotal;
+        $invoice->order_status=$request->order_status;
         // $invoice->paid=$request->pay;
         // $invoice->due=$request->due;
         // $invoice->date=$request->date;

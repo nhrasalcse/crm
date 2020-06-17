@@ -40,6 +40,7 @@
                                             @if(Auth::user()->role_id==1)
                                             <th>Agent</th>
                                             @endif
+                                            <th>Status</th>
                                             <th>Action</th>
                                             </tr>
                                         </thead>
@@ -56,6 +57,8 @@
                                                     @if(Auth::user()->role_id==1)
                                                     <td>{{$invoice->user->name ?? ''}}</td>
                                                     @endif
+                                                    
+                                                    <td>{{$invoice->order_status ?? ''}}</td>
                                                     <td>
                                                         <table>
                                                             <tr> 
@@ -83,6 +86,7 @@
                                             @if(Auth::user()->role_id==1)
                                             <th>Agent</th>
                                             @endif
+                                            <th>Status</th>
                                             <th>Action</th>
                                             </tr>
                                         </tfoot>

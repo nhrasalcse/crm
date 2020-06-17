@@ -77,7 +77,16 @@
                                 <td> Total</td>
                                 <td>
                                     <input type="text" name="subtotal" value="" class="form-control total"readonly></td>
-                            </tr>
+                                <td> Oder Status</td>
+                                <td>
+                                <select name="order_status" class="form-control" id="">
+                                <option value="">Select</option>
+                                <option value="SEND BLUE DART">SEND BLUE DART</option>
+                                <option value="Hold">Hold</option>
+                                <option value="WRONG LEAD">WRONG LEAD</option>
+                                </select>
+                                </td>
+                                 </tr>
                             </tr>
                             
                             </table>

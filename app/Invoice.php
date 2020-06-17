@@ -18,6 +18,7 @@ class Invoice extends Model
     'date',
     'payment_method',
     'user_id',
+    'order_status',
    ];
    public function user(){
     return $this->belongsTo(User::class ,'user_id');
